@@ -296,6 +296,14 @@ And you can use it by:
 Capybara.javascript_driver = :webkit
 ```
 
+### Poltergeist
+
+[Poltergeist](https://github.com/jonleighton/poltergeist) is another
+headless driver which integrates Capybara with
+[PhantomJS](http://phantomjs.org/). It is truly headless, so doesn't
+require Xvfb to run on your CI server. It will also detect and report
+any Javascript errors that happen within the page.
+
 ## The DSL
 
 *A complete reference is available at
@@ -579,9 +587,10 @@ the text of the `h1` to "Something", and this happened, this test would
 pass. If you do not want this behaviour, you can set
 `Capybara.automatic_reload` to `false`.
 
-## Using the DSL in unsupported testing frameworks
+## Using the DSL elsewhere
 
 You can mix the DSL into any context by including <tt>Capybara::DSL</tt>:
+
 
 ```ruby
 require 'capybara'
@@ -601,6 +610,8 @@ module MyModule
   end
 end
 ```
+
+This enables its use in unsupported testing frameworks, and for general-purpose scripting.
 
 ## Calling remote servers
 
@@ -804,7 +815,6 @@ To set up a development environment, simply do:
 
 ```bash
 git submodule update --init
-gem install bundler
 bundle install
 bundle exec rake  # run the test suite
 ```
